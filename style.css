@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.animation {
+  position: absolute;
+  top: calc(50% - 140px);
+  left: calc(50% - 140px);
+  width: 280px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animation .scan {
+  width: 60%;
+  padding: 25px 30px;
+  transition: transform .4s ease-out;
+  margin: 0 auto;
+  position: relative;
+}
+
+.animation .scan::before,
+.animation .scan::after,
+.animation .scan>:first-child::before,
+.animation .scan>:first-child::after {
+  content: '';
+  position: absolute;
+  width: 10%;
+  height: 15%;
+  border: solid #ECE9E9;
+}
+
+/* top left corner */
+.animation .scan::before {
+	top: 10px; 
+  left: 10px;
+	border-width: 4px 0 0 4px;
+}
+
+/* top right corner */
+.animation .scan::after {
+  top: 10px;
+  right: 10px;
+  border-width: 4px 4px 0 0;
+}
+
+/* bottom right corner */
+.animation .scan>:first-child::before {
+  bottom: 10px;
+  right: 10px;
+  border-width: 0 4px 4px 0;
+}
+
+/* bottom left corner */
+.animation .scan>:first-child::after {
+  bottom: 10px;
+  left: 10px;
+  border-width: 0 0 4px 4px;
+}
+
+.animation .scan:hover {
+	transform: scale(1.2);
+}
+
+.animation .scan:hover .scanner {
+  animation-play-state: running;
+}
+
+.animation .scan .scanner {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: red;
+  opacity: 0.7;
+  box-shadow: 0px 0px 8px 10px rgba(255, 17, 37, 0.49);
+  top: 50%;
+  left: 0;
+  animation-name: scan;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  z-index: 2;
+}
+
+@keyframes scan {
+  0% {
+    box-shadow: 0px 0px 8px 10px rgba(255, 17, 37, 0.49);
+    top: 50%;
+  }
+  25% {
+    box-shadow: 0px 6px 8px 10px rgba(255, 17, 37, 0.49);
+    top: 5px;
+  }
+  75% {
+    box-shadow: 0px -6px 8px 10px rgba(255, 17, 37, 0.49);
+    top: 98%;
+  }
+}
